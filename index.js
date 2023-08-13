@@ -19,7 +19,7 @@ const db = mysql2.createConnection({
 
 // pegando elementos
 app.get('/', (req, res) => {
-    res.json('Teste')
+    res.send('Logado')
 })
 
 

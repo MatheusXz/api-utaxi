@@ -1,23 +1,35 @@
 import express from "express";
 import { config } from "dotenv";
-import mysql2 from "mysql2";
+import { CorsOptions } from "cors";
+import bodyParser from "body-parser";
+import routes from "./controllers/routes";
 
-config();
+CorsOptions();
+
+config(); // VENDO DO .env
 
 const app = express();
 const port = process.env.PORT || 8000;
 
+
+
 app.use(express.json());
+app.use(CorsOptions())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/api", routes)
+
+// RODANDO A PORT ONDE ESTA NO .env
+app.listen(port, () => {
+  console.log(`Ok connection! http://localhost:${port}/`);
+});
 
 // pegando elementos
 app.get("/", (req, res) => {
   res.send("Logado");
 });
 
-// criação da porta onde vai rodar a api
-app.listen(port, () => {
-  console.log(`Ok connection! http://localhost:${port}/`);
-});
+
+export default app;
 
 // // conexão com o banco
 // const db = mysql2.createConnection({

@@ -1,7 +1,7 @@
-import UserController from './get-users'
+// import UserController from './get-users'
 
-export default UserController() => {
-    return (req, res) => {
+// export default UserController() => {
+//     return (req, res) => {
 
-    } // eslint-disable-line no-unused-vars
-};
+//     } // eslint-disable-line no-unused-vars
+// };
